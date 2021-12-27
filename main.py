@@ -9,11 +9,14 @@ from coinmarketcapapi import CoinMarketCapAPI, CoinMarketCapAPIError
 from secret import coinMarketCapApiKey
 cmc = CoinMarketCapAPI(coinMarketCapApiKey)
 
-r = cmc.cryptocurrency_quotes_latest(symbol='BTC')
+try:
+    r = cmc.cryptocurrency_quotes_latest(symbol='BTC')
 
-display = f"BTC  24h change = {r.data['volume_change_24h']}, current price = {r.data['price']}"
+    display = f"BTC  24h change = {r.data['volume_change_24h']}, current price = {r.data['price']}"
+except:
+    display = "failed to fetch data"
 
-scrollphathd.write_string(" Hello World!", brightness=0.5)
+scrollphathd.write_string(display, brightness=0.3)
 
 while True:
     # Show the buffer
