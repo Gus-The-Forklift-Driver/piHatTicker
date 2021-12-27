@@ -14,10 +14,11 @@ try:
 except:
     display = " failed to fetch data"
 else:
-    display = f" BTC  24h change = {r.data['BTC']['USD']['volume_change_24h']}, current price = {r.data['BTC']['USD']['price']}"
+    display = f" BTC  24h change = {r.data['BTC']['quote']['USD']['volume_change_24h']}, current price = {r.data['BTC']['quote']['USD']['price']}"
 
 scrollphathd.write_string(display, brightness=0.2)
 
+# asdfasdf
 while True:
     # Show the buffer
     scrollphathd.show()
