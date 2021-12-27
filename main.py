@@ -5,32 +5,28 @@ import random
 
 import scrollphathd
 
-print("""
-Scroll pHAT HD: Graph
-Displays a graph with random values.
-Press Ctrl+C to exit!
-""")
 
-MIN_VALUE = 0
-MAX_VALUE = 50
+def scroll_message(message):
+    # Clear the display and reset scrolling to (0, 0)
+    scrollphathd.clear()
+    length = scrollphathd.write_string(message)  # Write out your message
+    scrollphathd.show()                          # Show the result
+    # Initial delay before scrolling
+    time.sleep(0.5)
 
-# Uncomment the below if your display is upside down
-#   (e.g. if you're using it in a Pimoroni Scroll Bot)
-# scrollphathd.rotate(degrees=180)
+    length -= scrollphathd.width
 
-# Begin with a list of 17 zeros
-values = [0] * scrollphathd.DISPLAY_WIDTH
+    # Now for the scrolling loop...
+    while length > 0:
+        # Scroll the buffer one place to the left
+        scrollphathd.scroll(1)
+        scrollphathd.show()                      # Show the result
+        length -= 1
+        # Delay for each scrolling step
+        time.sleep(0.02)
 
-while True:
-    # Insert a random value at the beginning
-    values.insert(0, random.randrange(MIN_VALUE, MAX_VALUE))
+    # Delay at the end of scrolling
+    time.sleep(0.5)
 
-    # Get rid of the last value, keeping the list at 17 (DISPLAY_WIDTH) items
-    values = values[:scrollphathd.DISPLAY_WIDTH]
 
-    # Plot the random values onto Scroll pHAT HD
-    scrollphathd.set_graph(values, low=MIN_VALUE,
-                           high=MAX_VALUE, brightness=0.3)
-
-    scrollphathd.show()
-    time.sleep(0.05)
+scroll_message("Hello World! How are you today?")
