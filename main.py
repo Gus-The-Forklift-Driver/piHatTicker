@@ -8,7 +8,7 @@ from pycoingecko import CoinGeckoAPI
 cg = CoinGeckoAPI()
 
 r = cg.get_price(ids='bitcoin', vs_currencies='gbp')
-display = r[0][0]
+display = f"r{['bitcoin']['gbp']}£ "
 scrollphathd.write_string(display, brightness=0.2)
 
 # asdfasdf
