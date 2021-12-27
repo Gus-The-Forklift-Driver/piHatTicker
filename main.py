@@ -21,6 +21,7 @@ s = sched.scheduler(time.time, time.sleep)
 
 
 def update_price(sc):
+    scrollphathd.clear()
     print("fetching data")
     r = cg.get_price(ids='bitcoin', vs_currencies='gbp')
     display = f"{utils.human_format(r['bitcoin']['gbp'])} "
