@@ -11,6 +11,8 @@ cg = CoinGeckoAPI()
 scrollphathd.fill(0)
 scrollphathd.show()
 
+scrollphathd.set_font(scrollphathd.fonts.font3x5)
+
 r = cg.get_price(ids='bitcoin', vs_currencies='gbp')
 display = f"{r['bitcoin']['gbp']} ▲"
 scrollphathd.write_string(display, brightness=0.2)
