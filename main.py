@@ -5,29 +5,12 @@ import random
 
 import scrollphathd
 
+scrollphathd.write_string(" Hello World!", brightness=0.5)
 
-def scroll_message(message):
-    # Clear the display and reset scrolling to (0, 0)
-    scrollphathd.clear()
-    length = scrollphathd.write_string(
-        message, brightness=0.1)  # Write out your message
-    scrollphathd.show()                          # Show the result
-    # Initial delay before scrolling
-    time.sleep(0.5)
-
-    length -= scrollphathd.width
-
-    # Now for the scrolling loop...
-    while length > 0:
-        # Scroll the buffer one place to the left
-        scrollphathd.scroll(1)
-        scrollphathd.show()                      # Show the result
-        length -= 1
-        # Delay for each scrolling step
-        time.sleep(0.02)
-
-    # Delay at the end of scrolling
-    time.sleep(0.5)
-
-
-scroll_message("Hello World! How are you today?")
+while True:
+    # Show the buffer
+    scrollphathd.show()
+    # Scroll the buffer content
+    scrollphathd.scroll()
+    # Wait for 0.1s
+    time.sleep(0.1)
