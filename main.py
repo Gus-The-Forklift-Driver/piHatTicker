@@ -16,7 +16,7 @@ try:
 except:
     display = "failed to fetch data"
 
-scrollphathd.write_string(display, brightness=0.3)
+scrollphathd.write_string(display, brightness=0.2)
 
 while True:
     # Show the buffer
