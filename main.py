@@ -5,30 +5,17 @@ import random
 import scrollphathd
 
 from pycoingecko import CoinGeckoAPI
+cg = CoinGeckoAPI()
 
+r = cg.get_price(ids='bitcoin', vs_currencies='gbp')
+display = r[0][0]
+scrollphathd.write_string(display, brightness=0.2)
 
-i = 0
-
+# asdfasdf
 while True:
-    i += 2
-    s = math.sin(i / 50.0) * 2.0 + 6.0
-
-    for x in range(0, 17):
-        for y in range(0, 7):
-            v = 0.3 + (0.3 * math.sin((x * s) + i / 4.0)
-                       * math.cos((y * s) + i / 4.0))
-
-            scrollphathd.pixel(x, y, v)
-
-    time.sleep(0.01)
+    # Show the buffer
     scrollphathd.show()
-#scrollphathd.write_string(display, brightness=0.2)
-
-# # asdfasdf
-# while True:
-#     # Show the buffer
-#     scrollphathd.show()
-#     # Scroll the buffer content
-#     scrollphathd.scroll()
-#     # Wait for 0.1s
-#     time.sleep(0.1)
+    # Scroll the buffer content
+    scrollphathd.scroll()
+    # Wait for 0.1s
+    time.sleep(0.1)
