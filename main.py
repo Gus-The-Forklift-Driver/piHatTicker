@@ -9,7 +9,8 @@ import scrollphathd
 def scroll_message(message):
     # Clear the display and reset scrolling to (0, 0)
     scrollphathd.clear()
-    length = scrollphathd.write_string(message)  # Write out your message
+    length = scrollphathd.write_string(
+        message, brightness=0.1)  # Write out your message
     scrollphathd.show()                          # Show the result
     # Initial delay before scrolling
     time.sleep(0.5)
