@@ -1,15 +1,16 @@
 #!/usr/bin/env python
 
+import time
+
 import scrollphathd
+
+scrollphathd.pixel(0, 0, 0.5)
 
 try:
     while True:
-        for x in range(18):
-            scrollphathd.fill(0.1, 0, 0, x, 7)
-            scrollphathd.show()
-        for x in range(18):
-            scrollphathd.fill(0, 0, 0, x, 7)
-            scrollphathd.show()
+        scrollphathd.scroll(1, 1)
+        scrollphathd.show()
+        time.sleep(0.1)
 
 except KeyboardInterrupt:
     scrollphathd.fill(0)
