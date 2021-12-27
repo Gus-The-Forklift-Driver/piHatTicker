@@ -1,28 +1,34 @@
-#!/usr/bin/env python
-
+import math
 import time
 import random
 
 import scrollphathd
 
-from coinmarketcapapi import CoinMarketCapAPI, CoinMarketCapAPIError
-from secret import coinMarketCapApiKey
-cmc = CoinMarketCapAPI(coinMarketCapApiKey)
+from pycoingecko import CoinGeckoAPI
 
-try:
-    r = cmc.cryptocurrency_quotes_latest(symbol='BTC')
-except:
-    display = " failed to fetch data"
-else:
-    display = f" BTC  24h change = {r.data['BTC']['quote']['USD']['volume_change_24h']}, current price = {r.data['BTC']['quote']['USD']['price']}"
 
-scrollphathd.write_string(display, brightness=0.2)
+i = 0
 
-# asdfasdf
 while True:
-    # Show the buffer
+    i += 2
+    s = math.sin(i / 50.0) * 2.0 + 6.0
+
+    for x in range(0, 17):
+        for y in range(0, 7):
+            v = 0.3 + (0.3 * math.sin((x * s) + i / 4.0)
+                       * math.cos((y * s) + i / 4.0))
+
+            scrollphathd.pixel(x, y, v)
+
+    time.sleep(0.01)
     scrollphathd.show()
-    # Scroll the buffer content
-    scrollphathd.scroll()
-    # Wait for 0.1s
-    time.sleep(0.1)
+#scrollphathd.write_string(display, brightness=0.2)
+
+# # asdfasdf
+# while True:
+#     # Show the buffer
+#     scrollphathd.show()
+#     # Scroll the buffer content
+#     scrollphathd.scroll()
+#     # Wait for 0.1s
+#     time.sleep(0.1)
